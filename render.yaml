@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: p2p-signaling-server
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "18.20.4"
+      # Paylaşımlı hosting alan adı (virgülle birden fazla eklenebilir)
+      - key: ALLOWED_ORIGINS
+        value: "https://p2p.dedemova.com.tr"
